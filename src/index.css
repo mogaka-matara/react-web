@@ -2,13 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100;16..144,200;16..144,300;16..144,400;16..144,500;16..144,600;16..144,700&display=swap');
+
+:root {
+  --primary-blue: #00d8ff;
+  --primary-purple: #6a00ff;
+}
+
+.blue {
+  color: var(--primary-blue)
+}
+
+.outline {
+  background-color: transparent!important;
+}
+
 @layer base {
-    li {
-      @apply p-4
-    }
-  
-    button {
-      @apply text-white border bg-indigo-600 border-indigo-600
-      hover:bg-transparent hover:text-indigo-600 rounded-md
-    }
+  * {
+    @apply font-[Montagu+Slab]
   }
+  h1 {
+    @apply text-3xl font-bold
+  }
+
+  li {
+    @apply px-4
+  }
+
+  button {
+    @apply bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-blue)] py-3 px-7 rounded-3xl
+  }
+}

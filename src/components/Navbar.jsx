@@ -1,53 +1,57 @@
-import React, {useState} from 'react'
+
+import React, {useState} from 'react';
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
 
 
-import { FcMenu } from "react-icons/fc";
-import { MdCancel  } from "react-icons/md"
+const Navbar = () => {
 
-function Navbar() {
   const [nav, setNav] = useState(false)
-  const handleClick = () =>setNav (!nav)
+  const handleNav = () => {
+    setNav(!nav)
+  }
 
 
   return (
-    <div className='w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadow-lg'>
-      <div className='px-2 flex justify-between items-center w-full h-full'>
-        <div className='flex items-center'>
-          <h1 className='text-3xl font-bold mr-4 ml-10 sm:text-4xl'>Unitas</h1>
-          <ul className='hidden md:flex'>
+    <div className="w-full h-[90px] bg-gray-900">
+      <div className="max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full">
+        <div>
+          <h1 className="text-[#00d8ff] ">SHARPWRITERS</h1>
+        </div>
+        <div className="hidden md:flex">
+          <ul className="flex text-white items-center">
             <li>Home</li>
-            <li>About</li>
-            <li>Platforms</li>
-            <li>Support</li>
             <li>Pricing</li>
+            <li>Services</li>
+            <li>Samples</li>
             <li>Contact</li>
+            <li>Sign Up</li>
+            <button className="ml-4">Order Now</button>
           </ul>
         </div>
-        <div className='hidden md:flex pr-8'>
-          <button className='border-none bg-transparent text-black mr-4'>Sign In </button>
-          <button className='px-8 py-3 '>Sign Up</button>
-        </div>
-        <div className='md:hidden mr-4 ' onClick={handleClick}>
-          {!nav ? <FcMenu className='w-5' />: <MdCancel className='w-5'/>} 
+
+        <div onClick={handleNav} className="block md:hidden">
+          {nav ? < AiOutlineClose  size={30} className='text-white'/>: < AiOutlineMenu size={30} className='text-white' /> }
+          
           
         </div>
-      </div>
-      <ul className={!nav ? 'hidden':'absolute bg-zinc-200 w-full px-8'}>
-            <li className='border-b-2 border-zinc-300 w-fill'>Home</li>
-            <li className='border-b-2 border-zinc-300 w-fill'>About</li>
-            <li className='border-b-2 border-zinc-300 w-fill'>Platforms</li>
-            <li className='border-b-2 border-zinc-300 w-fill'> Support</li>
-            <li className='border-b-2 border-zinc-300 w-fill'>Pricing</li>
-            <li className='border-b-2 border-zinc-300 w-fill'>Contact</li>
-        <div className='flex flex-col my-4'>
-          <button className='bg-transparent text-indigo-600 px-8 py-3 mb-4'>Sign In</button>
-          <button className='px-8 py-3'>Sign Up</button>
-        </div>
 
-      </ul>
+        {/*Mobile Menu*/}
+        <div className={nav ? 'w-full bg-gray-900 text-white absolute top-[90px] left-0 flex justify-center text-center' : 
+    'absolute left-[-100%]'}>
+          <ul>
+            <li className="text-2xl">Home</li>
+            <li className="text-2xl">Pricing</li>
+            <li className="text-2xl">Services</li>
+            <li className="text-2xl">Samples</li>
+            <li className="text-2xl">Contact</li>
+            <li className="text-2xl">Sign Up</li>
+            <li><button className="m-8 px-4">Order Now</button></li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Navbar
+export default Navbar;
